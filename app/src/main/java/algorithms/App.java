@@ -13,8 +13,8 @@ public class App {
         for (int beginIndex = 0; beginIndex < timeSeries.length - k; beginIndex++) {
             int endIndex = beginIndex + k;
             int currentSum = 0;
-            for (int v = beginIndex; v < endIndex; v++) {
-                currentSum += timeSeries[v];
+            for (int arrayELementIndex = beginIndex; arrayELementIndex < endIndex; arrayELementIndex++) {
+                currentSum += timeSeries[arrayELementIndex];
             }
             int currentAverage = currentSum / k;
             result.add(currentAverage);
