@@ -11,24 +11,24 @@ public class C {
     private static List<Integer> getNeighbours( List<List<Integer>> matrix, int row,  int col) {
         var neighbours = new ArrayList<Integer>();
 
-        var lowerVerticalNeighbourRow = row + 1;
-        var leftHorizontalNeighbourCol = col - 1;
-        var upVerticalNeighbourRow = row - 1;
-        var rightHorizontalNeighbourCol = col + 1;
-
         int rowMax = matrix.size() - 1;
 
-        if ((row < 0) && (row > rowMax)) {
+        if ((row < 0) || (row > rowMax)) {
             return neighbours;
         }
 
         int colPerRowMax = matrix.get(row).size() - 1;
 
-        if ((col < 0) && (col > colPerRowMax)) {
+        if ((col < 0) || (col > colPerRowMax)) {
             return neighbours;
         }
 
-        if (lowerVerticalNeighbourRow >= 0) {
+        var lowerVerticalNeighbourRow = row + 1;
+        var leftHorizontalNeighbourCol = col - 1;
+        var upVerticalNeighbourRow = row - 1;
+        var rightHorizontalNeighbourCol = col + 1;
+
+        if (lowerVerticalNeighbourRow <= rowMax) {
             var lowerVerticalNeighbour = matrix.get(lowerVerticalNeighbourRow).get(col);
             neighbours.add(lowerVerticalNeighbour);
         }
@@ -38,16 +38,16 @@ public class C {
             neighbours.add(leftHorizontalNeighbour);
         }
 
-        if ((upVerticalNeighbourRow >= 0) && (upVerticalNeighbourRow <= rowMax)) {
+        if (upVerticalNeighbourRow >= 0) {
             var upVerticalNeighbour = matrix.get(upVerticalNeighbourRow).get(col);
             neighbours.add(upVerticalNeighbour);
         }
 
-        if ((rightHorizontalNeighbourCol >= 0) && (rightHorizontalNeighbourCol <= colPerRowMax)) {
+        if (rightHorizontalNeighbourCol <= colPerRowMax) {
             var rightHorizontalNeighbour = matrix.get(row).get(rightHorizontalNeighbourCol);
             neighbours.add(rightHorizontalNeighbour);
         }
-
+        neighbours.sort(Comparator.naturalOrder());
         return neighbours;
     }
 
