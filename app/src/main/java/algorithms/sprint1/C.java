@@ -8,8 +8,18 @@ import java.io.IOException;
 
 public class C {
 
-    private static List<Integer> getNeighbours(List<List<Integer>> matrix, int row, int col) {
-        var neighbours = new ArrayList<Integer>();
+    private static List<Integer> getNeighbours( List<List<Integer>> matrix, int row,  int col) {
+         var neighbours = new ArrayList<Integer>();
+
+         int rowMax = matrix.size() - 1;
+        if ((row >= 0) && (row <= rowMax)) {
+             int colPerRowMax = matrix.get(row).size() - 1;
+            if ((col >= 0) && (col <= colPerRowMax)) {
+                 var lowerVerticalNeighbour = matrix.get(row + 1).get(col);
+                neighbours.add(lowerVerticalNeighbour);
+            }
+        }
+
         for (int i = 0; i < matrix.size(); i++) {
             for (int j = 0; j < matrix.get(i).size(); j++) {
                 if ((row == i) && (col == j)) {
