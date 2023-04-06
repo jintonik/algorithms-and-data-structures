@@ -9,14 +9,25 @@ import java.io.IOException;
 public class C {
 
     private static List<Integer> getNeighbours( List<List<Integer>> matrix, int row,  int col) {
-         var neighbours = new ArrayList<Integer>();
+        var neighbours = new ArrayList<Integer>();
 
-         int rowMax = matrix.size() - 1;
+        var lowerVerticalNeighbourRow = row + 1;
+        var leftHorizontalNeighbourCol = col - 1;
+        var upVerticalNeighbourRow = row - 1;
+        var rightHorizontalNeighbourCol = col + 1;
+
+        int rowMax = matrix.size() - 1;
         if ((row >= 0) && (row <= rowMax)) {
-             int colPerRowMax = matrix.get(row).size() - 1;
+            int colPerRowMax = matrix.get(row).size() - 1;
             if ((col >= 0) && (col <= colPerRowMax)) {
-                 var lowerVerticalNeighbour = matrix.get(row + 1).get(col);
+                var lowerVerticalNeighbour = matrix.get(row + 1).get(col);
                 neighbours.add(lowerVerticalNeighbour);
+                var leftHorizontalNeighbour = matrix.get(row).get(col - 1);
+                neighbours.add(leftHorizontalNeighbour);
+                var upVerticalNeighbour = matrix.get(row - 1).get(col);
+                neighbours.add(upVerticalNeighbour);
+                var rightHorizontalNeighbour = matrix.get(row).get(col + 1);
+                neighbours.add(rightHorizontalNeighbour);
             }
         }
 
