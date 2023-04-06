@@ -17,43 +17,37 @@ public class C {
         var rightHorizontalNeighbourCol = col + 1;
 
         int rowMax = matrix.size() - 1;
-        if ((row >= 0) && (row <= rowMax)) {
-            int colPerRowMax = matrix.get(row).size() - 1;
-            if ((col >= 0) && (col <= colPerRowMax)) {
-                var lowerVerticalNeighbour = matrix.get(row + 1).get(col);
-                neighbours.add(lowerVerticalNeighbour);
-                var leftHorizontalNeighbour = matrix.get(row).get(col - 1);
-                neighbours.add(leftHorizontalNeighbour);
-                var upVerticalNeighbour = matrix.get(row - 1).get(col);
-                neighbours.add(upVerticalNeighbour);
-                var rightHorizontalNeighbour = matrix.get(row).get(col + 1);
-                neighbours.add(rightHorizontalNeighbour);
-            }
+
+        if ((row < 0) && (row > rowMax)) {
+            return neighbours;
         }
 
-        for (int i = 0; i < matrix.size(); i++) {
-            for (int j = 0; j < matrix.get(i).size(); j++) {
-                if ((row == i) && (col == j)) {
-                    if (i < matrix.size() - 1) {
-                        var lowerVerticalNeighbour = matrix.get(i + 1).get(j);
-                        neighbours.add(lowerVerticalNeighbour);
-                    }
-                    if (j > 0) {
-                        var leftHorizontalNeighbour = matrix.get(i).get(j - 1);
-                        neighbours.add(leftHorizontalNeighbour);
-                    }
-                    if (i > 0) {
-                        var upVerticalNeighbour = matrix.get(i - 1).get(j);
-                        neighbours.add(upVerticalNeighbour);
-                    }
-                    if (j < matrix.get(i).size()) {
-                        var rightHorizontalNeighbour = matrix.get(i).get(j + 1);
-                        neighbours.add(rightHorizontalNeighbour);
-                    }
-                    break;
-                }
-            }
+        int colPerRowMax = matrix.get(row).size() - 1;
+
+        if ((col < 0) && (col > colPerRowMax)) {
+            return neighbours;
         }
+
+        if (lowerVerticalNeighbourRow >= 0) {
+            var lowerVerticalNeighbour = matrix.get(lowerVerticalNeighbourRow).get(col);
+            neighbours.add(lowerVerticalNeighbour);
+        }
+
+        if (leftHorizontalNeighbourCol >= 0) {
+            var leftHorizontalNeighbour = matrix.get(row).get(leftHorizontalNeighbourCol);
+            neighbours.add(leftHorizontalNeighbour);
+        }
+
+        if ((upVerticalNeighbourRow >= 0) && (upVerticalNeighbourRow <= rowMax)) {
+            var upVerticalNeighbour = matrix.get(upVerticalNeighbourRow).get(col);
+            neighbours.add(upVerticalNeighbour);
+        }
+
+        if ((rightHorizontalNeighbourCol >= 0) && (rightHorizontalNeighbourCol <= colPerRowMax)) {
+            var rightHorizontalNeighbour = matrix.get(row).get(rightHorizontalNeighbourCol);
+            neighbours.add(rightHorizontalNeighbour);
+        }
+
         return neighbours;
     }
 
