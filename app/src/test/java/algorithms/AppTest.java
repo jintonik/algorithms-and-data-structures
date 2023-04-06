@@ -3,12 +3,13 @@
  */
 package algorithms;
 
+import algorithms.sprint1.B;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test
+    public void testBclass() {
+       assertFalse(B.checkParity(7, 11, -7));
     }
 }
