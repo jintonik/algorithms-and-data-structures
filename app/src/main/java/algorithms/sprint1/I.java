@@ -7,12 +7,20 @@ import java.io.InputStreamReader;
 
 public class I {
 
-    private static boolean isPowerOfFour(int n) {
-        int number = 4;
-        while (number == n) {
-            number = number * 4;
+    public static boolean isPowerOfFour(int n) {
+        if (n == 1) {
+            return true;
         }
-        return false;
+        int number = 4;
+        while (true) {
+            if (number == n) {
+                return true;
+            }
+            if (number > n) {
+                return false;
+            }
+            number *= 4;
+        }
     }
 
     public static void main(String[] args) throws IOException {
