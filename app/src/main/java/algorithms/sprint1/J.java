@@ -17,8 +17,17 @@ public class J {
         if (isSimple(n)) {
             return Collections.singletonList(n);
         }
-        int number = n;
-        for (int i = 2; i <= n; i++) {
+        int number = n - 1;
+        int divider = 2;
+        // 1) 1 < i < n; 1 < i < (n / divider) => 
+        while(number > 1) {
+            if (number % divider != 0) {
+                divider++;
+            }
+            number = number / divider;
+        }
+
+        for (int i = 2; i < n; i++) {
             if (number % i == 0) {
 
             }
