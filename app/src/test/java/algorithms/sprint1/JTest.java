@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static algorithms.sprint1.J.factorize;
-import static algorithms.sprint1.J.isSimple;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JTest {
     @Test
@@ -21,7 +19,12 @@ public class JTest {
     }
 
     @Test
-    public void isSimple1() {
-        assertTrue(isSimple(63));
+    public void test3() {
+        assertEquals(List.of(3, 3, 7), factorize(63));
+    }
+
+    @Test
+    public void test4() {
+        assertEquals(List.of(13, 70578583), factorize(917521579));
     }
 }

@@ -6,56 +6,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class J {
 
     public static List<Integer> factorize(int n) {
         var integers = new ArrayList<Integer>();
-        var simpleNumbers = new ArrayList<Integer>();
-        if (isSimple(n)) {
-            return Collections.singletonList(n);
-        }
-        int number = n - 1;
         int divider = 2;
-        // 1) 1 < i < n; 1 < i < (n / divider) => 
-        while(number > 1) {
-            if (number % divider != 0) {
+        while(n > 1) {
+            if (n % divider == 0) {
+                n = n / divider;
+                integers.add(divider);
+            } else {
                 divider++;
             }
-            number = number / divider;
         }
-
-        for (int i = 2; i < n; i++) {
-            if (number % i == 0) {
-
-            }
-        }
-        for (int simpleNumber : simpleNumbers) {
-        }
-//        int divideResult = n;
-//        while (divideResult % i == 0) {
-//            divideResult = divideResult / i;
-//            integers.add(i);
-//        }
         return integers;
-    }
-
-    public static boolean isSimple(int number) {
-        if (number == 1) {
-            return false;
-        }
-        if (number == 2) {
-            return true;
-        }
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) {
-                System.out.printf("The number '%s' could be divided by '%s'.", number, i);
-                return false;
-            }
-        }
-        return true;
     }
 
     public static void main(String[] args) throws IOException {
