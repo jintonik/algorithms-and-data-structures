@@ -16,6 +16,11 @@ public class JTest {
     }
 
     @Test
+    public void test2() {
+        assertEquals(List.of(862399), factorize(862399));
+    }
+
+    @Test
     public void isSimple1() {
         assertTrue(isSimple(63));
     }
