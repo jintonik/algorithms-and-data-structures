@@ -11,17 +11,38 @@ import java.util.List;
 public class J {
 
     public static List<Integer> factorize(int n) {
-        var integers = new ArrayList<Integer>();
+        var simpleDividers = new ArrayList<Integer>();
+//        for (int i = 2; i <= n; i++) {
+//            if (n % i == 0) {
+//                n = n / i;
+//                simpleDividers.add(i);
+//            }
+//        }
         int divider = 2;
-        while(n > 1) {
+        do {
             if (n % divider == 0) {
                 n = n / divider;
-                integers.add(divider);
+                simpleDividers.add(divider);
             } else {
                 divider++;
             }
+        } while (divider <= n);
+        return simpleDividers;
+    }
+
+    public static boolean isSimple(int number) {
+        if (number == 1) {
+            return false;
         }
-        return integers;
+        if (number == 2) {
+            return true;
+        }
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) throws IOException {
