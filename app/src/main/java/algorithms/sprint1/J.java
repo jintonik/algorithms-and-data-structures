@@ -18,6 +18,7 @@ public class J {
 //                simpleDividers.add(i);
 //            }
 //        }
+        //algorithm should be faster in twice
         int divider = 2;
         do {
             if (n % divider == 0) {
