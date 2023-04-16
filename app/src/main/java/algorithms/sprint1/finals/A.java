@@ -4,45 +4,36 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.stream.Collectors;
 
 public class A {
 
     public static String calculateShortestWay(String streetLength, String housesNumbers) {
-        var numbers = Arrays.stream(housesNumbers.split(" "))
-                .map(Integer::parseInt)
-                .toList()
-                .toArray(new Integer[Integer.parseInt(streetLength)]);
+        var numbers = housesNumbers.split(" ");
         var shortestWay = new ArrayList<String>();
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] == 0) {
+            if (numbers[i].equals("0")) {
                 shortestWay.add("0");
             }
             else {
-                shortestWay.add(String.valueOf(calculateMinimalDelta(i, numbers)));
+                int counter = 0;
+                while (counter <= numbers.length) {
+                    counter++;
+                    if (i - counter >= 0) {
+                        if (numbers[i - counter].equals("0")) {
+                            shortestWay.add(String.valueOf(counter));
+                            break;
+                        }
+                    }
+                    if (i + counter < numbers.length) {
+                        if (numbers[i + counter].equals("0")) {
+                            shortestWay.add(String.valueOf(counter));
+                            break;
+                        }
+                    }
+                }
             }
         }
         return String.join(" ", shortestWay);
-    }
-
-    private static int calculateMinimalDelta(int nonZeroIndex, Integer[] numbers) {
-        int wayToZeroRight = 0;
-        for (int i = nonZeroIndex; i < numbers.length; i++) {
-            if (numbers[i] == 0) {
-                break;
-            }
-            wayToZeroRight++;
-        }
-        int wayToZeroLeft = 0;
-        for (int i = nonZeroIndex; i >= 0; i--) {
-            if (numbers[i] == 0) {
-                break;
-            }
-            wayToZeroLeft++;
-        }
-        return Math.min(wayToZeroLeft, wayToZeroRight);
     }
 
     public static void main(String[] args) throws IOException {
