@@ -1,8 +1,6 @@
 package algorithms.sprint1.finals;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 public class A {
@@ -17,7 +15,7 @@ public class A {
             }
         }
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i].equals("0")){
+            if (numbers[i].equals("0")) {
                 shortestWay.add("0");
             } else {
                 int diff = Math.abs(i - zeroIndexes.get(0));
@@ -33,11 +31,12 @@ public class A {
     }
 
     public static void main(String[] args) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                BufferedWriter outputStream = new BufferedWriter(new FileWriter("output.txt"))) {
             var streetLength = reader.readLine();
             var housesNumbers = reader.readLine();
             var shortestWay = calculateShortestWay(streetLength, housesNumbers);
-            System.out.println(shortestWay);
+            outputStream.write(shortestWay);
         }
     }
 }
