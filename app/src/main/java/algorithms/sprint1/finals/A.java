@@ -14,10 +14,39 @@ public class A {
                 zeroIndexes.add(i);
             }
         }
+
+        for (int i = 0; i < zeroIndexes.get(0); i++) {
+
+        }
+
+        for (int i = 0; i < zeroIndexes.size(); i++) {
+            int currentZeroIndex = zeroIndexes.get(i);
+            int nextZeroIndex = zeroIndexes.get(i + 1);
+            if (currentZeroIndex == 0) {
+                shortestWay.add("0");
+            }
+            for (int j = 1; j < currentZeroIndex; j++) {
+                shortestWay.add(String.valueOf(j));
+            }
+            for (int j = currentZeroIndex; j < nextZeroIndex; j++) {
+                int midIndex = (nextZeroIndex - currentZeroIndex) / 2;
+                if (j <= midIndex) {
+                    shortestWay.add(String.valueOf(j));
+                }
+                if (j > midIndex) {
+                    shortestWay.add(String.valueOf(nextZeroIndex - midIndex));
+                }
+            }
+            for (int j = nextZeroIndex; j < Integer.parseInt(streetLength); j++) {
+
+            }
+        }
+
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i].equals("0")) {
                 shortestWay.add("0");
-            } else {
+            }
+            else {
                 int diff = Math.abs(i - zeroIndexes.get(0));
                 for (Integer zeroIndex : zeroIndexes) {
                     if (Math.abs(i - zeroIndex) < diff) {
