@@ -14,7 +14,6 @@ class Node<V> {
 
 public class Solution {
     public static void solution(Node<String> head) {
-
         for (int i = 0; i < 5000; i++) {
             if (head != null) {
                 System.out.println(head.value);

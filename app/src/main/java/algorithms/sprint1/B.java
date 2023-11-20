@@ -29,5 +29,4 @@ public class B {
         }
         scanner.close();
     }
-
 }

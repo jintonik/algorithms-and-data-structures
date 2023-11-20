@@ -25,11 +25,9 @@ public class E {
             System.out.println(longestWord);
             System.out.println(longestWord.length());
         }
-
     }
 
     private static int readInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
     }
-
 }
