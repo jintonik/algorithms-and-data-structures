@@ -18,4 +18,12 @@ class ATest {
         var shortestWay = calculateShortestWay("6", "0 7 9 4 8 20");
         assertEquals("0 1 2 3 4 5", shortestWay);
     }
+
+    @Test
+    void test3() {
+        //9
+        //98 0 10 77 0 59 28 0 94
+        var shortestWay = calculateShortestWay("9", "98 0 10 77 0 59 28 0 94");
+        assertEquals("1 0 1 1 0 1 1 0 1", shortestWay);
+    }
 }

@@ -54,7 +54,6 @@ public class C {
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int rowsCount = readInt(reader);
-            int colsCount = readInt(reader);
             List<List<Integer>> matrix = readMatrix(reader, rowsCount);
             int rowId = readInt(reader);
             int colId = readInt(reader);
@@ -64,7 +63,6 @@ public class C {
             }
         }
     }
-
 
     private static int readInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());

@@ -34,7 +34,6 @@ public class I {
         }
     }
 
-
     private static int readInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
     }

@@ -35,21 +35,15 @@ public class D {
 
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            int numberOfDays = readInt(reader);
             List<Integer> temperatures = readList(reader);
             int chaosNumber = getWeatherRandomness(temperatures);
             System.out.println(chaosNumber);
         }
     }
 
-    private static int readInt(BufferedReader reader) throws IOException {
-        return Integer.parseInt(reader.readLine());
-    }
-
     private static List<Integer> readList(BufferedReader reader) throws IOException {
-        return Arrays.asList(reader.readLine().split(" "))
-                .stream()
-                .map(elem -> Integer.parseInt(elem))
+        return Arrays.stream(reader.readLine().split(" "))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 }
