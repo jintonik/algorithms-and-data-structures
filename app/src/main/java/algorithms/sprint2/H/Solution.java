@@ -16,13 +16,13 @@ public class Solution {
             return false;
         }
 
-        if (!isBracketsNumberEqual("{", "}", sequence)) {
+        if (isBracketsNumberNotEqual("{", "}", sequence)) {
             return false;
         }
-        if (!isBracketsNumberEqual("[", "]", sequence)) {
+        if (isBracketsNumberNotEqual("[", "]", sequence)) {
             return false;
         }
-        if (!isBracketsNumberEqual("(", ")", sequence)) {
+        if (isBracketsNumberNotEqual("(", ")", sequence)) {
             return false;
         }
 
@@ -45,7 +45,7 @@ public class Solution {
         System.out.println(capitaliseAnswer(isCorrectBracketSequence(brackets)));
     }
 
-    private static boolean isBracketsNumberEqual(String firstBracket, String secondBracket, Stack<String> brackets) {
+    private static boolean isBracketsNumberNotEqual(String firstBracket, String secondBracket, Stack<String> brackets) {
         int firstBracketsNumber = 0;
         int secondBracketsNumber = 0;
         for (String bracket : brackets) {
@@ -56,7 +56,7 @@ public class Solution {
                 secondBracketsNumber++;
             }
         }
-        return firstBracketsNumber == secondBracketsNumber;
+        return firstBracketsNumber != secondBracketsNumber;
     }
 
     private static String capitaliseAnswer(boolean result) {
