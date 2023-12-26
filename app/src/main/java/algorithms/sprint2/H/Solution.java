@@ -11,11 +11,9 @@ public class Solution {
         if ((sequence.size() == 1) && (sequence.get(0).equals(""))) {
             return true;
         }
-
         if (sequence.size() % 2 != 0) {
             return false;
         }
-
         if (isBracketsNumberNotEqual("{", "}", sequence)) {
             return false;
         }
@@ -25,7 +23,6 @@ public class Solution {
         if (isBracketsNumberNotEqual("(", ")", sequence)) {
             return false;
         }
-
         for (int i = 0; i < sequence.size() / 2; i++) {
             if ((sequence.get(i).equals("{") && sequence.get(sequence.size() - 1 - i).equals("}")) ||
                     (sequence.get(i).equals("[") && sequence.get(sequence.size() - 1 - i).equals("]")) ||
